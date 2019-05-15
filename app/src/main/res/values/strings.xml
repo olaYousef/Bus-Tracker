@@ -1,0 +1,77 @@
+<resources>
+
+    <string name="app_name">BusTrucker</string>
+    <string name="title_activity_passactivety">Map</string>
+    <string name="emergency">emergency</string>
+    <string name="call">Call</string>
+    <string name="add_trip">Add Trip</string>
+    <string name="name">Name</string>
+    <string name="mobile_number">Mobile number</string>
+    <string name="today_s_trips">Today\'s trips</string>
+    <string name="logout">Logout</string>
+    <string name="search_bus">Search Bus</string>
+    <string name="title_activity_driver1">driver1</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string-array name="from">
+
+        <item>select start point</item>
+        <item>mojama3 amman irbed</item>
+        <item>mojama3 shehk khaleel irbed</item>
+        <item>mojama3 al ghour</item>
+
+    </string-array>
+
+    <string-array name="to">
+
+        <item>select arriving point</item>
+        <item>mojama3 amman irbed</item>
+        <item>mojama3 shehk khaleel irbed</item>
+        <item>mojama3 al ghour</item>
+
+    </string-array>
+
+    <string-array name="at">
+        <item>select time</item>
+        <item>8:30</item>
+        <item>9:30</item>
+        <item>10:30</item>
+
+    </string-array>
+
+    <string-array name="jordan_areas">
+        <item>"مجمع الشمالي"</item>
+        <item>"مجمع الشيخ خليل"</item>
+        <item>"مجمع عمان الجديد"</item>
+        <item>"مجمع الملك عبد الله"</item>
+        <item>"مجمع الأمير راشد"</item>
+        <item>"مجمع الجنوب"</item>
+        <item>"مجمع المحطة"</item>
+        <item>"مجمع الشمال"</item>
+        <item>"مجمع الاغوار"</item>
+        <item>"مجمع عمان الشمال"</item>
+        <item>"مجمع دوار البلدية/ الجامعة الاردنية"</item>
+        <item>"مجمع البقعة"</item>
+        <item>"مجمع السلط الخارجي"</item>
+        <item>"مجمع المفرق الغربي"</item>
+        <item>"مجمع المفرق الشمالي"</item>
+        <item>"مجمع المفرق الشرقي"</item>
+        <item>"مجمع عجلون"</item>
+        <item>"مجمع جرش الجديد"</item>
+        <item>"مجمع معان"</item>
+        <item>"مجمع الكرك الداخلي(البركة)"</item>
+        <item>"مجمع الكرك الخارجي (واد إطوي)"</item>
+        <item>"مجمع الطفيلة الخارجي"</item>
+        <item>"مجمع الطفيلة الداخلي"</item>
+        <item>"المجمع الخارجي"</item>
+        <item>"المجمع الداخلي"</item>
+    </string-array>
+
+
+</resources>

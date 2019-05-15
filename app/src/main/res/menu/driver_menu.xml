@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+>
+        <item
+            android:id="@+id/mobile"
+            android:icon="@android:drawable/ic_menu_call"
+            android:title="@string/mobile_number" />
+        <item
+            android:id="@+id/today"
+            android:icon="@android:drawable/ic_menu_my_calendar"
+            android:title="@string/today_s_trips" />
+        <item
+            android:id="@+id/out"
+            android:icon="@drawable/logout"
+            android:title="@string/logout" />
+</menu>

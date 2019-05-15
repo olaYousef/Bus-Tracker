@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="170dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView4"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-smallcaps"
+        android:foregroundGravity="center"
+        android:text="WASLNI"
+        android:textColor="#333"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/current"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@+id/source"
+        android:layout_below="@+id/imageView4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="5dp"
+        android:textAllCaps="false"
+        android:background="@drawable/shape"
+        android:textSize="18dp"
+        android:fontFamily="serif"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginRight="5dp"
+        android:padding="10dp"
+        android:text="Current"
+        android:textColor="#024759" />
+
+    <AutoCompleteTextView
+        android:id="@+id/source"
+        android:layout_width="200dp"
+        android:layout_marginLeft="5dp"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="18dp"
+        android:fontFamily="serif"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imageView4"
+        android:background="@drawable/shape"
+        android:gravity="center"
+        android:hint="Source"
+        android:padding="10dp"
+        android:textColor="#024759"
+        android:textColorHint="#024759" />
+
+    <AutoCompleteTextView
+        android:id="@+id/dest"
+        android:layout_width="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:layout_height="45dp"
+        android:layout_below="@id/current"
+        android:layout_centerHorizontal="true"
+        android:textSize="18dp"
+        android:fontFamily="serif"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shape"
+        android:gravity="center"
+        android:hint="Destination"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textColor="#024759"
+        android:textColorHint="#024759" />
+
+    <Button
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_height="45dp"
+        android:layout_below="@id/noOfseat"
+        android:layout_centerHorizontal="true"
+        android:textAllCaps="false"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/shape"
+        android:textSize="16dp"
+        android:fontFamily="serif"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Search"
+        android:textColor="#024759" />
+
+    <TextView
+        android:id="@+id/timePicker"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_below="@id/current"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@id/dest"
+        android:background="@drawable/shape"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Time"
+        android:textAllCaps="false"
+        android:textColor="#024759"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/noOfseat"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_below="@id/dest"
+        android:textAllCaps="false"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/shape"
+        android:textSize="16dp"
+        android:layout_marginLeft="5dp"
+        android:fontFamily="serif"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Available"
+        android:textColor="#024759" />
+
+    <TextView
+        android:id="@+id/bookCancel"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_below="@id/dest"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@+id/noOfseat"
+        android:background="@drawable/shape"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Book/Cancel Seat's"
+        android:textAllCaps="false"
+        android:textColor="#024759"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/contact"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_height="45dp"
+        android:layout_below="@id/search"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape"
+        android:textSize="16dp"
+        android:fontFamily="serif"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Contact Services"
+        android:textColor="#024759" />
+
+
+
+
+</RelativeLayout>
