@@ -45,8 +45,8 @@ public class SourceDestination extends AppCompatActivity {
 
         fire = FirebaseDatabase.getInstance().getReference().child("Driver").child("vFBazRDHytZB4ClXH8PDOJrKljE3");
 
-/*        Initiation();
-        setAdapter();*/
+        Initiation();
+        setAdapter();
 
 
         fire.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -112,7 +112,7 @@ public class SourceDestination extends AppCompatActivity {
         });
     }
 
-/*    void setAdapter() {
+    void setAdapter() {
         String[] entries = {"مجمع عمان الجديد", "مجمع الشيخ خليل", "مجمع الشمالي",
                 "مجمع الاغوار", "مجمع الشمال", "مجمع المحطة", "مجمع الجنوب", "مجمع الأمير راشد", "مجمع الملك عبد الله",
                 "مجمع السلط الخارجي", "مجمع البقعة", "مجمع دوار البلدية/ الجامعة الاردنية", "مجمع عمان الشمال",
@@ -138,7 +138,7 @@ public class SourceDestination extends AppCompatActivity {
         call = findViewById(R.id.contact);
         current = findViewById(R.id.current);
         timePic = findViewById(R.id.timePicker);
-    }*/
+    }
 
     public void getLoc(String s, String d) {
 
