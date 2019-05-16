@@ -74,10 +74,10 @@ public class passactivety extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     Toolbar toolbar;
-    FloatingActionButton locate,search;
+    FloatingActionButton locate, search;
     double latitude;
     double longitude;
-    private FusedLocationProviderClient client ;
+    private FusedLocationProviderClient client;
 
     DatabaseReference databaseReference;
 
@@ -107,60 +107,60 @@ public class passactivety extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-BottomNavigationView passenger_nv=(BottomNavigationView) findViewById(R.id.p_nv);
-passenger_nv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.emergency:
+        BottomNavigationView passenger_nv = (BottomNavigationView) findViewById(R.id.p_nv);
+        passenger_nv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.emergency:
 
-                SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                        .findFragmentById(R.id.map);
-                mapFragment.getMapAsync((OnMapReadyCallback) passactivety.this);
+                        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                                .findFragmentById(R.id.map);
+                        mapFragment.getMapAsync((OnMapReadyCallback) passactivety.this);
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(passactivety.this);
-                builder.setTitle("call emergency");
-                builder.setMessage("do you want to call 911");
-                builder.setPositiveButton("call", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(Intent.ACTION_CALL);
-                        intent.setData(Uri.parse("tel:911"));
+                        AlertDialog.Builder builder = new AlertDialog.Builder(passactivety.this);
+                        builder.setTitle("call emergency");
+                        builder.setMessage("do you want to call 911");
+                        builder.setPositiveButton("call", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(Intent.ACTION_CALL);
+                                intent.setData(Uri.parse("tel:911"));
+                                startActivity(intent);
+                            }
+                        }).setNegativeButton("cancle", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                        break;
+                    case R.id.add:
+                        Intent intent = new Intent(passactivety.this, MainActivity.class);
                         startActivity(intent);
-                    }
-                }).setNegativeButton("cancle", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                AlertDialog alert = builder.create();
-                alert.show();
-                break;
-            case R.id.add:
-                Intent intent = new Intent(passactivety.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-                break;
-            case R.id.call:
-                Intent intent2 = new Intent(passactivety.this, path.class);
-                startActivity(intent2);
-                break;
+                        finish();
+                        break;
+                    case R.id.call:
+                        Intent intent2 = new Intent(passactivety.this, path.class);
+                        startActivity(intent2);
+                        break;
 
-        }
-        return true;
+                }
+                return true;
 
-    }
-});
+            }
+        });
 
-        client=LocationServices.getFusedLocationProviderClient(this) ;
+        client = LocationServices.getFusedLocationProviderClient(this);
 
         client.getLastLocation().addOnSuccessListener(passactivety.this, new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
 
-                latitude=location.getLatitude() ;
-                longitude =location.getLongitude() ;
+                latitude = location.getLatitude();
+                longitude = location.getLongitude();
 
             }
         }).addOnFailureListener(passactivety.this, new OnFailureListener() {
@@ -168,9 +168,9 @@ passenger_nv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavi
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(passactivety.this, "can't get current location,please open GPS !!!!", Toast.LENGTH_LONG).show();
             }
-        }) ;
+        });
 
-            }
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -180,7 +180,7 @@ passenger_nv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavi
         LatLng busstation = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(busstation).title("my loc"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(busstation));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(busstation,15f));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(busstation, 15f));
 
     }
 

@@ -22,7 +22,7 @@ import java.util.HashMap;
 
 public class Register extends AppCompatActivity {
 
-    EditText c_email, c_pass, mobile, name;
+    EditText c_email, c_pass, mobile, fname, lname, conf_password;
     Button c_create;
     private FirebaseAuth mAuth;
     DatabaseReference mDatabase;
@@ -34,62 +34,68 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         c_email = findViewById(R.id.email);
-        name = findViewById(R.id.fname);
+        fname = findViewById(R.id.fname);
+        lname = findViewById(R.id.lName);
+        conf_password = findViewById(R.id.confirm_password);
         mobile = findViewById(R.id.mobile);
         c_pass = findViewById(R.id.password);
-        c_create = (Button) findViewById(R.id.reg);
+        c_create = findViewById(R.id.reg);
 
         mRegProgress = new ProgressDialog(this);
-
+        mRegProgress.show();
         mAuth = FirebaseAuth.getInstance();
+
         c_create.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                if (!c_email.getText().toString().isEmpty() && !fname.getText().toString().isEmpty() &&
+                        !lname.getText().toString().isEmpty() && !c_pass.getText().toString().isEmpty() &&
+                        !conf_password.getText().toString().isEmpty()
+                ) {
+                    if ((conf_password.equals(c_pass))) {
+                        mAuth.createUserWithEmailAndPassword(c_email.getText().toString().trim(), c_pass.getText().toString())
+                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()) {
+                                            FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
+                                            String uid = current_user.getUid();
+                                            if (c_email.getText().toString().contains("dd"))
+                                                mDatabase = FirebaseDatabase.getInstance().getReference().child("Driver").child(uid);
+                                            if (c_email.getText().toString().contains("mm"))
+                                                mDatabase = FirebaseDatabase.getInstance().getReference().child("Admin").child(uid);
+                                            HashMap<String, String> userMap = new HashMap<>();
 
-               mAuth.createUserWithEmailAndPassword(c_email.getText().toString(), c_pass.getText().toString())
-                       .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                   @Override
-                   public void onComplete(@NonNull Task<AuthResult> task) {
-                       if (task.isSuccessful()) {
-                           FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
-                           String uid = current_user.getUid();
-                           if(c_email.getText().toString().contains("dd"))
-                               mDatabase = FirebaseDatabase.getInstance().getReference().child("Driver").child(uid);
-                           if(c_email.getText().toString().contains("mm"))
-                               mDatabase = FirebaseDatabase.getInstance().getReference().child("Admin").child(uid);
+                                            userMap.put("Password", c_pass.getText().toString());
+                                            userMap.put("firstName", fname.getText().toString());
+                                            userMap.put("lastName", lname.getText().toString());
+                                            userMap.put("E-mail", c_email.getText().toString());
+                                            userMap.put("Seat", "21");
+                                            userMap.put("Phone", mobile.getText().toString());
+                                            mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        Toast.makeText(Register.this, "Done ! Account created", Toast.LENGTH_LONG).show();
+                                                        Intent intent = new Intent(Register.this, loginact.class);
+                                                        startActivity(intent);
+                                                        finish();
+                                                    }
+                                                }
+                                            });
+                                        } else {
 
-                           HashMap<String, String> userMap = new HashMap<>();
-                           userMap.put("Name", name.getText().toString());
-                           userMap.put("E-mail", c_email.getText().toString());
-                           userMap.put("Seat", "28");
-                           userMap.put("Password", c_pass.getText().toString());
-                           userMap.put("Phone", mobile.getText().toString());
-                           mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                               @Override
-                               public void onComplete(@NonNull Task<Void> task) {
-
-                                   if(task.isSuccessful()){
-
-                                       Toast.makeText(Register.this, "Done ! Account created", Toast.LENGTH_LONG).show();
-                                       Intent intent = new Intent(Register.this, loginact.class);
-                                       startActivity(intent);
-                                       finish();
-
-                                   }
-                               }
-                           });
-
-
-
-                       } else {
-                           mRegProgress.hide();
-                           Toast.makeText(Register.this, "Can't Be Create Account ,Check Internet Or Data", Toast.LENGTH_LONG).show();
-                       }
-                   }
-               });
-
+                                            Toast.makeText(Register.this, "Can't Create Account, Check Your Information", Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+                                });
+                    } else
+                        Toast.makeText(Register.this, "Your password and confirm password are not the same", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    Toast.makeText(Register.this, "Please Fill All required information", Toast.LENGTH_LONG).show();
             }
         });
-
+        mRegProgress.dismiss();
+        }
     }
-}

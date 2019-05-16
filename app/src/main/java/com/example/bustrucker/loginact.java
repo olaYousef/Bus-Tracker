@@ -20,8 +20,9 @@ import com.google.firebase.auth.FirebaseUser;
 public class loginact extends AppCompatActivity {
 
     FirebaseAuth mAuth;
-    Button log, reg;
+    Button log, reg ;
     EditText email, pass;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class loginact extends AppCompatActivity {
             @Override
            public void onClick(View v) {
 
-                mAuth.signInWithEmailAndPassword(email.getText().toString(), pass.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(email.getText().toString().trim(), pass.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
