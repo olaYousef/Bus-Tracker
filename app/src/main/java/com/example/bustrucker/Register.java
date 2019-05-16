@@ -42,7 +42,6 @@ public class Register extends AppCompatActivity {
         c_create = findViewById(R.id.reg);
 
         mRegProgress = new ProgressDialog(this);
-        mRegProgress.show();
         mAuth = FirebaseAuth.getInstance();
 
         c_create.setOnClickListener(new View.OnClickListener() {
@@ -76,9 +75,11 @@ public class Register extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()) {
+                                                        mRegProgress.show();
                                                         Toast.makeText(Register.this, "Done ! Account created", Toast.LENGTH_LONG).show();
                                                         Intent intent = new Intent(Register.this, loginact.class);
                                                         startActivity(intent);
+                                                        mRegProgress.dismiss();
                                                         finish();
                                                     }
                                                 }
@@ -96,6 +97,6 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(Register.this, "Please Fill All required information", Toast.LENGTH_LONG).show();
             }
         });
-        mRegProgress.dismiss();
+
         }
     }
